@@ -9,10 +9,12 @@ function MovieList({ moviesArray }) {
       <Row>
         {moviesArray.map((Movie) => (
           <MovieCard
+            key={Movie.Id}
+            Id={Movie.id}
             Title={Movie.Title}
             Description={Movie.Plot}
             posterURL={Movie.Poster}
-            Rate={Movie.Rate}
+            Rate={Movie.Rating}
           />
         ))}
       </Row>
