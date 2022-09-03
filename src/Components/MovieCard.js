@@ -1,6 +1,7 @@
 import React from "react";
-import { Col } from "react-bootstrap";
+import { Button, Col } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
+import { Link } from "react-router-dom";
 
 function MovieCard({ Id, Title, Description, posterURL, Rate }) {
   let yellowStars = new Array(Rate).fill(
@@ -32,7 +33,7 @@ function MovieCard({ Id, Title, Description, posterURL, Rate }) {
   let allStars = [...yellowStars, ...greyStars];
 
   return (
-    <Col lg={3} md={4} sm={6} xs={12}>
+    <Col lg={3} md={4} sm={6} xs={12} style={{ marginBottom: "15px" }}>
       <Card style={{ height: "100%" }}>
         <Card.Img variant="top" src={posterURL} />
         <Card.Body>
@@ -40,6 +41,18 @@ function MovieCard({ Id, Title, Description, posterURL, Rate }) {
           <Card.Text>{Description}</Card.Text>
           <Card.Text>{allStars}</Card.Text>
         </Card.Body>
+        <Button>
+          <Link
+            to={`/${Id}/${Title.replaceAll(" ", "-")}`}
+            style={{
+              pointer: "Cursor",
+              textDecoration: "none",
+              color: "#FFFFFF",
+            }}
+          >
+            Preview Trailer
+          </Link>
+        </Button>
       </Card>
     </Col>
   );

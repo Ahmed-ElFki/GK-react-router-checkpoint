@@ -9,21 +9,19 @@ import { MovieContext } from "./MovieContext";
 
 function Filter() {
   const { moviesData, setMoviesData } = useContext(MovieContext);
-  // eslint-disable-next-line
-  const [moviesDataCopy, setMoviesDataCopy] = useState([...moviesData]);
   const [movieName, setMovieName] = useState("");
 
   const handleFilter = () => {
-    if (movieName.trim() != "")
+    if (movieName.trim() !== "")
       setMoviesData(
         moviesData
           .filter((currentMovie) =>
             currentMovie.Title.includes(movieName) ? currentMovie : null
           )
-          .filter((currentMovie) => currentMovie != null)
+          .filter((currentMovie) => currentMovie !== null)
       );
     else {
-      setMoviesData(moviesDataCopy);
+      setMoviesData(moviesData);
     }
   };
 
